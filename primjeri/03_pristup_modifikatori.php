@@ -11,12 +11,12 @@ class BankovniRacun {
     // PRIVATE - samo metode OVE klase mogu pristupiti
     private $stanje = 0;
     private $pin;
-    private $historijaTransakcija = [];
+    private $povijestTransakcija = [];
 
     public function __construct($vlasnik, $pin) {
         $this->vlasnik = $vlasnik;
         $this->pin = $pin;
-        $this->dodajUHistoriju("Račun otvoren");
+        $this->dodajUpovijest("Račun otvoren");
     }
 
     // GETTER - siguran način za čitanje privatnih podataka
@@ -24,15 +24,15 @@ class BankovniRacun {
         return $this->stanje;
     }
 
-    public function getHistorija() {
-        return $this->historijaTransakcija;
+    public function getpovijest() {
+        return $this->povijestTransakcija;
     }
 
     // Javne metode za siguran rad s privatnim podacima
     public function uplati($iznos) {
         if ($iznos > 0) {
             $this->stanje += $iznos;
-            $this->dodajUHistoriju("Uplata: +{$iznos}€");
+            $this->dodajUpovijest("Uplata: +{$iznos}€");
             return true;
         }
         return false;
@@ -41,12 +41,12 @@ class BankovniRacun {
     public function podigni($iznos, $uneseniPin) {
         // Provjera PIN-a prije bilo kakve operacije!
         if ($uneseniPin !== $this->pin) {
-            $this->dodajUHistoriju("Neuspjeli pokušaj podizanja - krivi PIN");
+            $this->dodajUpovijest("Neuspjeli pokušaj podizanja - krivi PIN");
             return ["uspjeh" => false, "poruka" => "Krivi PIN!"];
         }
 
         if ($iznos > $this->stanje) {
-            $this->dodajUHistoriju("Neuspjeli pokušaj podizanja - nedovoljno sredstava");
+            $this->dodajUpovijest("Neuspjeli pokušaj podizanja - nedovoljno sredstava");
             return ["uspjeh" => false, "poruka" => "Nedovoljno sredstava!"];
         }
 
@@ -55,13 +55,13 @@ class BankovniRacun {
         }
 
         $this->stanje -= $iznos;
-        $this->dodajUHistoriju("Podizanje: -{$iznos}€");
+        $this->dodajUpovijest("Podizanje: -{$iznos}€");
         return ["uspjeh" => true, "poruka" => "Uspješno podignuto {$iznos}€"];
     }
 
     // PRIVATNA METODA - samo za internu upotrebu
-    private function dodajUHistoriju($opis) {
-        $this->historijaTransakcija[] = [
+    private function dodajUpovijest($opis) {
+        $this->povijestTransakcija[] = [
             "vrijeme" => date("H:i:s"),
             "opis" => $opis,
             "stanje" => $this->stanje
@@ -156,7 +156,7 @@ $rezultat3 = $racun->podigni(5000, "1234"); // Nedovoljno sredstava
             <tr><th>Vrijeme</th><th>Opis</th><th>Stanje</th></tr>
         </thead>
         <tbody>
-            <?php foreach ($racun->getHistorija() as $t): ?>
+            <?php foreach ($racun->getpovijest() as $t): ?>
             <tr>
                 <td><?= $t['vrijeme'] ?></td>
                 <td><?= $t['opis'] ?></td>
