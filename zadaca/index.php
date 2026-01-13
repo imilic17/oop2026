@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +14,28 @@
             padding: 40px 0;
             margin-bottom: 30px;
         }
+
         .task-card {
             border-left: 4px solid;
             margin-bottom: 20px;
         }
-        .task-1 { border-left-color: #28a745; }
-        .task-2 { border-left-color: #ffc107; }
-        .task-3 { border-left-color: #dc3545; }
-        .task-bonus { border-left-color: #6f42c1; }
+
+        .task-1 {
+            border-left-color: #28a745;
+        }
+
+        .task-2 {
+            border-left-color: #ffc107;
+        }
+
+        .task-3 {
+            border-left-color: #dc3545;
+        }
+
+        .task-bonus {
+            border-left-color: #6f42c1;
+        }
+
         .code-example {
             background: #2d2d2d;
             color: #f8f8f2;
@@ -30,6 +45,7 @@
             font-size: 14px;
             overflow-x: auto;
         }
+
         .points {
             position: absolute;
             top: 10px;
@@ -40,12 +56,19 @@
             border-radius: 20px;
             font-weight: bold;
         }
+
         @media print {
-            .hero { padding: 20px 0; }
-            .code-example { font-size: 11px; }
+            .hero {
+                padding: 20px 0;
+            }
+
+            .code-example {
+                font-size: 11px;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="hero">
         <div class="container">
@@ -95,13 +118,13 @@
 
                 <h6>Očekivani rezultat:</h6>
                 <div class="code-example">
-$film = new Film("Inception", 2010, "Sci-Fi");
-$film->setOcjena(9);
-echo $film->getInfo();     // Inception (2010) - Sci-Fi
-echo $film->getOcjena();   // 9
+                    $film = new Film("Inception", 2010, "Sci-Fi");
+                    $film->setOcjena(9);
+                    echo $film->getInfo(); // Inception (2010) - Sci-Fi
+                    echo $film->getOcjena(); // 9
 
-$film->setOcjena(15);      // Ne smije promijeniti (izvan raspona)
-echo $film->getOcjena();   // 9 (ostalo isto)
+                    $film->setOcjena(15); // Ne smije promijeniti (izvan raspona)
+                    echo $film->getOcjena(); // 9 (ostalo isto)
                 </div>
             </div>
         </div>
@@ -113,7 +136,8 @@ echo $film->getOcjena();   // 9 (ostalo isto)
                 <h4 class="mb-0"><i class="bi bi-2-circle"></i> Zadatak 2: Nasljeđivanje - Serija</h4>
             </div>
             <div class="card-body">
-                <p>Kreiraj datoteku <code>Serija.php</code> s klasom <strong>Serija</strong> koja nasljeđuje <strong>Film</strong>.</p>
+                <p>Kreiraj datoteku <code>Serija.php</code> s klasom <strong>Serija</strong> koja nasljeđuje
+                    <strong>Film</strong>.</p>
 
                 <h6>Zahtjevi:</h6>
                 <ul>
@@ -123,17 +147,18 @@ echo $film->getOcjena();   // 9 (ostalo isto)
                     <li>Override metodu <code>getInfo()</code> da vraća:<br>
                         <em>"[naziv] ([godina]) - [zanr] | [brojSezona] sezona, [brojEpizoda] epizoda"</em>
                     </li>
-                    <li>Nova metoda <code>prosjecnoEpizodaPoSezoni()</code> - vraća prosječan broj epizoda po sezoni</li>
+                    <li>Nova metoda <code>prosjecnoEpizodaPoSezoni()</code> - vraća prosječan broj epizoda po sezoni
+                    </li>
                 </ul>
 
                 <h6>Očekivani rezultat:</h6>
                 <div class="code-example">
-$serija = new Serija("Breaking Bad", 2008, "Drama", 5, 62);
-$serija->setOcjena(10);
-echo $serija->getInfo();
-// Breaking Bad (2008) - Drama | 5 sezona, 62 epizoda
+                    $serija = new Serija("Breaking Bad", 2008, "Drama", 5, 62);
+                    $serija->setOcjena(10);
+                    echo $serija->getInfo();
+                    // Breaking Bad (2008) - Drama | 5 sezona, 62 epizoda
 
-echo $serija->prosjecnoEpizodaPoSezoni();  // 12.4
+                    echo $serija->prosjecnoEpizodaPoSezoni(); // 12.4
                 </div>
 
                 <h6 class="mt-3">Dijagram:</h6>
@@ -169,7 +194,8 @@ echo $serija->prosjecnoEpizodaPoSezoni();  // 12.4
                 <h6>Zahtjevi:</h6>
                 <ul>
                     <li>Private svojstva: <code>ime</code>, <code>email</code>, <code>listaZelja</code> (array)</li>
-                    <li>Konstruktor koji prima <code>ime</code> i <code>email</code>, a <code>listaZelja</code> inicijalizira kao prazan array</li>
+                    <li>Konstruktor koji prima <code>ime</code> i <code>email</code>, a <code>listaZelja</code>
+                        inicijalizira kao prazan array</li>
                     <li>Getter metode: <code>getIme()</code>, <code>getEmail()</code></li>
                     <li>Metoda <code>dodajNaListu($film)</code> - dodaje Film objekt na listu želja</li>
                     <li>Metoda <code>ukloniSListe($naziv)</code> - uklanja film po nazivu</li>
@@ -179,21 +205,21 @@ echo $serija->prosjecnoEpizodaPoSezoni();  // 12.4
 
                 <h6>Očekivani rezultat:</h6>
                 <div class="code-example">
-$korisnik = new Korisnik("Ana", "ana@email.com");
+                    $korisnik = new Korisnik("Ana", "ana@email.com");
 
-$film1 = new Film("Inception", 2010, "Sci-Fi");
-$film2 = new Film("Titanic", 1997, "Drama");
-$serija = new Serija("Friends", 1994, "Komedija", 10, 236);
+                    $film1 = new Film("Inception", 2010, "Sci-Fi");
+                    $film2 = new Film("Titanic", 1997, "Drama");
+                    $serija = new Serija("Friends", 1994, "Komedija", 10, 236);
 
-$korisnik->dodajNaListu($film1);
-$korisnik->dodajNaListu($film2);
-$korisnik->dodajNaListu($serija);
+                    $korisnik->dodajNaListu($film1);
+                    $korisnik->dodajNaListu($film2);
+                    $korisnik->dodajNaListu($serija);
 
-echo $korisnik->brojFilmovaNaListi();  // 3
-print_r($korisnik->prikaziListu());    // ["Inception", "Titanic", "Friends"]
+                    echo $korisnik->brojFilmovaNaListi(); // 3
+                    print_r($korisnik->prikaziListu()); // ["Inception", "Titanic", "Friends"]
 
-$korisnik->ukloniSListe("Titanic");
-echo $korisnik->brojFilmovaNaListi();  // 2
+                    $korisnik->ukloniSListe("Titanic");
+                    echo $korisnik->brojFilmovaNaListi(); // 2
                 </div>
             </div>
         </div>
@@ -209,7 +235,8 @@ echo $korisnik->brojFilmovaNaListi();  // 2
 
                 <h6>Zahtjevi:</h6>
                 <ul>
-                    <li>Private svojstva: <code>naziv</code>, <code>katalog</code> (array filmova/serija), <code>korisnici</code> (array)</li>
+                    <li>Private svojstva: <code>naziv</code>, <code>katalog</code> (array filmova/serija),
+                        <code>korisnici</code> (array)</li>
                     <li>Metoda <code>dodajUKatalog($film)</code> - dodaje film ili seriju</li>
                     <li>Metoda <code>registrirajKorisnika($korisnik)</code> - dodaje korisnika</li>
                     <li>Metoda <code>pretraziPoZanru($zanr)</code> - vraća array filmova određenog žanra</li>
@@ -226,10 +253,10 @@ echo $korisnik->brojFilmovaNaListi();  // 2
 
                 <h6>Hint za provjeru tipa:</h6>
                 <div class="code-example">
-// Provjera je li objekt instanca određene klase:
-if ($film instanceof Serija) {
-    echo "Ovo je serija!";
-}
+                    // Provjera je li objekt instanca određene klase:
+                    if ($film instanceof Serija) {
+                    echo "Ovo je serija!";
+                    }
                 </div>
             </div>
         </div>
@@ -242,22 +269,22 @@ if ($film instanceof Serija) {
             <div class="card-body">
                 <p>Kreiraj datoteku <code>test.php</code> koja uključuje sve klase i demonstrira njihov rad:</p>
                 <div class="code-example">
-&lt;?php
-require_once 'Film.php';
-require_once 'Serija.php';
-require_once 'Korisnik.php';
-// require_once 'Videoteka.php';  // Ako radiš bonus
+                    &lt;?php
+                    require_once 'Film.php';
+                    require_once 'Serija.php';
+                    require_once 'Korisnik.php';
+                    // require_once 'Videoteka.php'; // Ako radiš bonus
 
-// Kreiraj barem 3 filma i 2 serije
-// Kreiraj barem 2 korisnika
-// Demonstriraj sve metode
+                    // Kreiraj barem 3 filma i 2 serije
+                    // Kreiraj barem 2 korisnika
+                    // Demonstriraj sve metode
 
-// Primjer:
-$film1 = new Film("Inception", 2010, "Sci-Fi");
-$film1->setOcjena(9);
-echo $film1->getInfo();
-// ... ostatak testiranja
-?&gt;
+                    // Primjer:
+                    $film1 = new Film("Inception", 2010, "Sci-Fi");
+                    $film1->setOcjena(9);
+                    echo $film1->getInfo();
+                    // ... ostatak testiranja
+                    ?&gt;
                 </div>
             </div>
         </div>
@@ -359,4 +386,5 @@ Ime_Prezime/
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
