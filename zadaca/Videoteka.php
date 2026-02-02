@@ -10,33 +10,18 @@ class Videoteka
         $this->naziv = $naziv;
     }
 
-
-    public function dodajUKatalog($film)
+    public function dodajUKatalog($stavka)
     {
-        if ($film instanceof Film) {
-            $this->katalog[] = $film;
+        if ($stavka instanceof Film || $stavka instanceof Serija) {
+            $this->katalog[] = $stavka;
         }
     }
-
 
     public function registrirajKorisnika($korisnik)
     {
         if ($korisnik instanceof Korisnik) {
             $this->korisnici[] = $korisnik;
         }
-    }
-
-    public function pretraziPoZanru($zanr)
-    {
-        $rezultat = [];
-
-        foreach ($this->katalog as $stavka) {
-            if ($stavka->zanr === $zanr) {
-                $rezultat[] = $stavka;
-            }
-        }
-
-        return $rezultat;
     }
 
     public function najboljeOcijenjeni($n)
@@ -80,4 +65,3 @@ class Videoteka
         ];
     }
 }
-?>
